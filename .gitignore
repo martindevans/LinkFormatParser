@@ -1,0 +1,12 @@
+*.suo
+*.ncrunchsolution
+*.ncrunchproject
+*.cache
+
+_Resharper.LinkFormatParser/
+
+LinkFormatParser.Test/bin
+LinkFormatParser.Test/obj
+
+LinkFormatParser/bin
+LinkFormatParser/obj
