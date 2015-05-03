@@ -19,7 +19,7 @@ namespace LinkFormatParser.Test
             Assert.AreEqual("40", link.Attributes["ct"]);
         }
 
-        readonly Regex _roshegex = new Regex("(\"(?<value>.*?)((?<!\\\\)(?:\\\\\\\\)*\"))|((?<value>[0-9]+?)(,|;|$))");
+        readonly Regex _regex = new Regex("(\"(?<value>.*?)((?<!\\\\)(?:\\\\\\\\)*\"))|((?<value>[0-9]+?)(,|;|$))");
 
         [TestMethod]
         public void ParseNonQuotedAttributes()

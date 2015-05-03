@@ -63,7 +63,7 @@ namespace LinkFormatParser
         }
 
         private static readonly Regex _resourceNameRegex = new Regex(@"<[^>]*>");
-        private static readonly Regex _attributeNameRegex = new Regex(@"\;(?<key>.*?)=");
+        private static readonly Regex _attributeNameRegex = new Regex(@"<?\;?(?<key>.*?)=");
         private static readonly Regex _attributeValueRegex = new Regex("(\"(?<value>.*?)((?<!\\\\)(?:\\\\\\\\)*\"))|((?<value>[0-9]+?)(,|;|$))");
 
         private string ParseUriReference(string link, ref int start)
@@ -80,7 +80,7 @@ namespace LinkFormatParser
         {
             Dictionary<string, string> attributes = new Dictionary<string, string>();
 
-            while ((start + 1 < link.Length) && link[start + 1] != ',')
+            while ((start + 1 < link.Length) && link[start] != ',')
                 ParseAttribute(link, ref start, attributes);
 
             return attributes;
