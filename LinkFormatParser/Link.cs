@@ -62,7 +62,7 @@ namespace LinkFormatParser
             _attributes = new AttributeCollection(ParseAttributes(link, ref start));
         }
 
-        private static readonly Regex _resourceNameRegex = new Regex(@"<[^>]*>");
+        private static readonly Regex _resourceNameRegex = new Regex(@"<(?<name>[^>]*)>");
         private static readonly Regex _attributeNameRegex = new Regex(@"<?\;?(?<key>.*?)=");
         private static readonly Regex _attributeValueRegex = new Regex("(\"(?<value>.*?)((?<!\\\\)(?:\\\\\\\\)*\"))|((?<value>[0-9]+?)(,|;|$))");
 
@@ -73,7 +73,7 @@ namespace LinkFormatParser
                 throw new ParseException("link", "Could not match resource name");
 
             start += m.Length;
-            return m.Value.TrimStart('<').TrimEnd('>');
+            return m.Groups["name"].Value;
         }
 
         private Dictionary<string, string> ParseAttributes(string link, ref int start)
